@@ -1,0 +1,31 @@
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: #f7f8fa;
+}
+
+.app-shell {
+  height: 100vh;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.small-muted {
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.kv {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 8px;
+}
