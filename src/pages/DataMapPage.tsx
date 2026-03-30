@@ -75,10 +75,10 @@ export default function DataMapPage() {
   const [edges, setEdges, onEdgesChange] = useEdgesState([])
 
   React.useEffect(() => {
-    // Find ads_order_kpi_daily and related assets for lineage
-    const centerAsset = assets.find(a => a.name === 'ads_order_kpi_daily')
-    const upstreamAssets = assets.filter(a => ['ods_order_header', 'ods_order_item'].includes(a.name))
-    const downstreamAssets = assets.filter(a => ['mdm_customer_golden'].includes(a.name))
+    // Find ads_bigtable_organization and related assets for lineage (updated to include new metrics)
+    const centerAsset = assets.find(a => a.name === 'ads_bigtable_organization')
+    const upstreamAssets = assets.filter(a => ['ods_order_header', 'ods_order_item', 'ods_customer'].includes(a.name))
+    const downstreamAssets = assets.filter(a => ['造旺本品盘价业绩（当时）', '盘价业绩目标达成率', '交易客户数', '客单价', '新客户数', '老客户数'].includes(a.name))
 
     const initialNodes: Node[] = []
     const initialEdges: Edge[] = []
@@ -110,11 +110,11 @@ export default function DataMapPage() {
       }
     })
 
-    // Downstream nodes
+    // Downstream nodes (metrics)
     downstreamAssets.forEach((asset, index) => {
       initialNodes.push({
         id: asset.id,
-        position: { x: 300 + index * 150, y: 300 },
+        position: { x: 200 + index * 120, y: 300 },
         data: { label: asset.name, asset },
         style: { background: '#52c41a', color: 'white' },
       })

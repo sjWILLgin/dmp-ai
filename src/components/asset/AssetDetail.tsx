@@ -175,15 +175,31 @@ export default function AssetDetail({ assetId }: { assetId?: string }) {
             ),
           },
           {
-            key: 'def',
-            label: '业务口径',
-            children: (
+            key: 'metric',
+            label: '指标详情',
+            children: (asset.type === 'METRIC' || asset.metricValue || asset.calculationMethod || asset.calculationLogic) ? (
               <div>
-                <Paragraph>这里放“业务口径/指标定义/口径变更记录”等（示例）。</Paragraph>
-                <Paragraph className="small-muted">
-                  你可以在后续 PRD 中补充：口径归属、适用场景、例外规则、版本号、变更审批流等。
-                </Paragraph>
+                {asset.type === 'METRIC' ? (
+                  <Text strong>指标资产</Text>
+                ) : (
+                  <Text type="secondary">当前资产非指标类型，已展示附加指标信息（示例数据）</Text>
+                )}
+                <Descriptions size="small" column={1} bordered style={{ marginTop: 8 }}>
+                  <Descriptions.Item label="指标价值">
+                    <Paragraph style={{ margin: 0 }}>{asset.metricValue || '暂无描述'}</Paragraph>
+                  </Descriptions.Item>
+                  <Descriptions.Item label="计算口径">
+                    <Paragraph style={{ margin: 0 }}>{asset.calculationMethod || '暂无描述'}</Paragraph>
+                  </Descriptions.Item>
+                  <Descriptions.Item label="计算逻辑">
+                    <Paragraph style={{ margin: 0, fontFamily: 'monospace', backgroundColor: '#f6f8fa', padding: 8, borderRadius: 4 }}>
+                      {asset.calculationLogic || '暂无描述'}
+                    </Paragraph>
+                  </Descriptions.Item>
+                </Descriptions>
               </div>
+            ) : (
+              <Text type="secondary">此资产不是指标类型</Text>
             ),
           },
         ]}

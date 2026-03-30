@@ -19,6 +19,7 @@ export type AssetField = {
 export type Asset = {
   id: string
   name: string
+  displayName?: string // 中文显示名称
   type: AssetType
   assetCategory?: AssetCategory
   domain: string
@@ -33,6 +34,10 @@ export type Asset = {
   createdAt: string
   updatedAt: string
   fields: AssetField[]
+  // 指标特有字段
+  metricValue?: string // 指标价值
+  calculationMethod?: string // 计算口径
+  calculationLogic?: string // 计算逻辑
 }
 
 export type Application = {

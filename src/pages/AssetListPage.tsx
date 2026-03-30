@@ -41,7 +41,21 @@ export default function AssetListPage() {
             dataSource={filtered}
             onRow={(record) => ({ onClick: () => openDrawer('ASSET_DETAIL', { assetId: record.id }) })}
             columns={[
-              { title: '资产名', dataIndex: 'name' },
+              { 
+                title: '资产名', 
+                render: (_: any, record: any) => record.displayName || record.name 
+              },
+              {
+                title: '是否指标',
+                key: 'isMetric',
+                width: 100,
+                render: (_: any, record: any) =>
+                  record.type === 'METRIC' || record.metricValue || record.calculationMethod || record.calculationLogic ? (
+                    <Tag color="blue">是</Tag>
+                  ) : (
+                    <Tag color="default">否</Tag>
+                  ),
+              },
               {
                 title: '资产大类',
                 key: 'assetCategory',

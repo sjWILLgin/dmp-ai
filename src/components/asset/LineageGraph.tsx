@@ -14,6 +14,17 @@ const lineageMap: Record<string, { upstream: string[]; downstream: string[] }> =
   a_dim_calendar: { upstream: [], downstream: ['a_ads_order', 'a_metric_trade_cust'] },
   a_metric_trade_cust: { upstream: ['a_ads_order'], downstream: [] },
   a_api_customer: { upstream: ['a_mdm_customer'], downstream: [] },
+  // 新增血缘关系
+  a_ads_bigtable_organization: { upstream: ['a_ods_order_header', 'a_ods_order_item', 'a_ods_customer'], downstream: ['metric_zw_benpin_panjiayeji', 'metric_panjiayeji_target_rate', 'metric_trading_customer_cnt_new', 'metric_avg_order_value', 'metric_new_customer_cnt', 'metric_old_customer_cnt'] },
+  a_ods_order_header: { upstream: [], downstream: ['a_ads_bigtable_organization'] },
+  a_ods_order_item: { upstream: [], downstream: ['a_ads_bigtable_organization'] },
+  a_ods_customer: { upstream: [], downstream: ['a_ads_bigtable_organization'] },
+  metric_zw_benpin_panjiayeji: { upstream: ['a_ads_bigtable_organization'], downstream: [] },
+  metric_panjiayeji_target_rate: { upstream: ['a_ads_bigtable_organization'], downstream: [] },
+  metric_trading_customer_cnt_new: { upstream: ['a_ads_bigtable_organization'], downstream: [] },
+  metric_avg_order_value: { upstream: ['a_ads_bigtable_organization'], downstream: [] },
+  metric_new_customer_cnt: { upstream: ['a_ads_bigtable_organization'], downstream: [] },
+  metric_old_customer_cnt: { upstream: ['a_ads_bigtable_organization'], downstream: [] },
 }
 
 export default function LineageGraph({ assetId }: { assetId: string }) {
