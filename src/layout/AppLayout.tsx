@@ -22,7 +22,7 @@ const { Title, Text } = Typography
 const menuItems: MenuProps['items'] = [
   { key: '/map', icon: <DeploymentUnitOutlined />, label: '数据地图' },
   { key: '/assets', icon: <DatabaseOutlined />, label: '数据资产列表' },
-
+  { key: '/metrics', icon: <RadarChartOutlined />, label: '指标总览' },
   // ✅ 新增：数据源与注册中心（指向实现中的 SourceRegistryPage）
   { key: '/source-registry', icon: <DatabaseOutlined />, label: <Link to="/source-registry">数据源与注册中心</Link> },
   { key: '/reports', icon: <RadarChartOutlined />, label: <Link to="/reports">报表概览</Link> },

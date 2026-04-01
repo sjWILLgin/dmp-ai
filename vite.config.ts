@@ -17,7 +17,7 @@ export default defineConfig({
 
   server: {
     host: true, // 允许外部访问（0.0.0.0）
-    allowedHosts: ['q4f8bdca.natappfree.cc'], // 放行 natapp 域名
+    allowedHosts: ['q4f8bdca.natappfree.cc', 'j2d6bb65.natappfree.cc'], // 放行 natapp 域名
     port: 5173,
     strictPort: true
   }

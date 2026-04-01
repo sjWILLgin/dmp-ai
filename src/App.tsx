@@ -7,6 +7,7 @@ import TagsPortraitPage from './pages/TagsPortraitPage'
 import ApplicationDeliveryPage from './pages/ApplicationDeliveryPage'
 import ValueOpsPage from './pages/ValueOpsPage'
 import MonitoringPage from './pages/MonitoringPage'
+import MetricsPage from './pages/MetricsPage'
 import MdmCenterPage from './pages/MdmCenterPage'
 import RegistryPage from './pages/RegistryPage'
 import SourceRegistryPage from './pages/SourceRegistryPage'
@@ -30,6 +31,7 @@ export default function App() {
         <Route path="/tags" element={<TagsPortraitPage />} />
         <Route path="/delivery" element={<ApplicationDeliveryPage />} />
         <Route path="/value" element={<ValueOpsPage />} />
+        <Route path="/metrics" element={<MetricsPage />} />
         <Route path="/monitoring" element={<MonitoringPage />} />
         <Route path="*" element={<Navigate to="/map" replace />} />
       </Routes>
